@@ -1,0 +1,17 @@
+.newsgallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  padding: 0.5em;
+}
+.loading {
+  display: flex;
+  font-size: 45px;
+}
+.hero {
+  display: flex;
+}
+.quotes {
+  width: 600px;
+  border: 2px solid black;
+}
