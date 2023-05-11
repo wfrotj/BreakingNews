@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import HeroContent from "../components/HeroContent";
+import { FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
   return (
@@ -11,7 +11,7 @@ function Navbar() {
         <h1>LOGO</h1>
       </div>
 
-      <div>
+      <div className="menu">
         <ul className="menu-list">
           <li>
             <Link to="/">Home</Link>
@@ -23,6 +23,9 @@ function Navbar() {
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
+        <div className="login">
+          <FaUserCircle />
+        </div>
       </div>
     </div>
   );

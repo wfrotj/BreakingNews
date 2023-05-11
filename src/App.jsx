@@ -34,7 +34,7 @@ function App() {
         <Route path="/technology" element={<Technology />} />
       </Routes>
 
-      {/* <GalleryNews /> */}
+      <GalleryNews />
     </div>
   );
 }

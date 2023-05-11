@@ -24,3 +24,13 @@
   align-items: center;
   gap: 2em;
 }
+.menu {
+  display: flex;
+  align-items: center;
+
+  padding: 1em;
+}
+.login {
+  font-size: 30px;
+  cursor: pointer;
+}

@@ -16,10 +16,12 @@ function News({ article }) {
             {title}
           </a>
         </h1>
-        <p>{LongDate({ publishedAt })}</p>
-        <div className="description">{description}</div>
-
         <p className="source">{name}</p>
+        <p>{LongDate({ publishedAt })}</p>
+        <div className="description">
+          {description}
+          <button onClick={showMore}>Read more..</button>
+        </div>
       </div>
     </article>
   );

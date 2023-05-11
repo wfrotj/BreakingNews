@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./HeroContent.css";
+import GetWeatherData from "./Weather/GetWeatherData";
 
 function HeroContent() {
   return (
@@ -26,7 +27,9 @@ function HeroContent() {
           <Link to="/technology">Tehnology</Link>
         </li>
       </ul>
-      <div>Weather</div>
+      <div>
+        <GetWeatherData />
+      </div>
     </div>
   );
 }
