@@ -1,9 +1,0 @@
-.weatherforecast {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.weather-details {
-  display: flex;
-  align-items: center;
-}

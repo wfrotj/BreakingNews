@@ -9,7 +9,7 @@ function GetWeatherData() {
         "https://api.openweathermap.org/data/2.5/weather?q=Manila&appid=e4de4a2dfe4265fb34a5c94c75d7813b"
       );
       const weatherData = await response.json();
-      console.log(weatherData);
+
       setData(weatherData);
     } catch (error) {
       console.error(error);

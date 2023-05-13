@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import News from "./News";
-import "./GalleryNews.css";
 
 function Sports() {
   const [news, setNews] = useState(null);
@@ -23,12 +22,10 @@ function Sports() {
     );
   return (
     <div>
-      <div className="hero">
-        <div className="newsgallery">
-          {news.map((article, index) => (
-            <News key={index} article={article} />
-          ))}
-        </div>
+      <div className="mobile: grid grid-cols-1 gap-4 p-4 tablet:grid-cols-2 laptop:grid-cols-3 overflow-hidden scroll-smooth">
+        {news.map((article, index) => (
+          <News key={index} article={article} />
+        ))}
       </div>
     </div>
   );

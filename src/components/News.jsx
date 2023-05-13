@@ -1,29 +1,27 @@
 import React from "react";
-import "./News.css";
-import LongDate from "./utils/LongDate";
 
 function News({ article }) {
-  const { title, urlToImage, description, url, publishedAt } = article;
+  // const showMore = () => {
+  //   description
+  // }
+  const { title, urlToImage } = article;
   const { name } = article.source;
   return (
-    <article className="news-container">
-      <div className="image-container">
-        <img src={urlToImage} />
-      </div>
-      <div className="details">
-        <h1>
-          <a href={url} target="_blank">
+    <div className="">
+      <div className="mobile:flex flex-col bg-white hover:drop-shadow-2xl laptop:grid-cols-3 cursor-pointer w-100 h-92">
+        <img
+          className="p-1 w-100 h-72"
+          src={urlToImage}
+          alt="image description"
+        />
+        <div className="mobile: text-justify ">
+          <p className="mobile: font-semibold tablet:font-bold text-lg">
             {title}
-          </a>
-        </h1>
-        <p className="source">{name}</p>
-        <p>{LongDate({ publishedAt })}</p>
-        <div className="description">
-          {description}
-          <button onClick={showMore}>Read more..</button>
+          </p>
+          <p className="mobile: underline underline-offset-4">{name}</p>
         </div>
       </div>
-    </article>
+    </div>
   );
 }
 
