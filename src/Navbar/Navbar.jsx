@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { FaUserCircle, FaWindowClose } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
+import { useState } from "react";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,31 +25,55 @@ function Navbar() {
     setVisible(!visible);
   };
   return (
-    <header className="bg-gray-300 flex justify-between p-4 text-lg font-semibold">
-      <div className="main-menu flex gap-4 ">
-        <h2>Time Display</h2>
+    <header className="bg-gray-300 mobile:flex justify-between p-4 text-lg font-semibold">
+      <div className="flex gap-4 laptop: text-2xl ">
+        <h2 className="mobile:hidden laptop:flex tablet:flex">Time Display</h2>
         <h1>LOGO</h1>
       </div>
-
-      <div className="menu flex gap-4 items-center ">
-        <div className="laptop:hidden text-2xl">
-          <button className="laptop:hidden text-2xl" onClick={toggleMenu}>
+      {/* Mobile */}
+      <div>
+        <div className="mobile:text-2xl mr-0  flex justify-end laptop:text-2xl laptop:hidden">
+          <button onClick={toggleMenu}>
             <FiMenu />
           </button>
         </div>
-        <ul
-          className={`${
-            menuOpen ? "flex" : "hidden"
-          } laptop:flex flex-col laptop:flex-row gap-4 align-middle mobile:flex-col`}
-          style={{
-            position: "absolute",
-            top: "5rem",
-            right: "5rem",
-            backgroundColor: "white",
-            padding: "1rem",
-            boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)",
-          }}
-        >
+
+        <div className="laptop:flex mobile:relative mobile:right-40 tablet:right-80 tablet:text-xl">
+          <ul
+            className={`mr-16 py-2 ${
+              menuOpen ? "relative" : "hidden"
+            } laptop:hidden`}
+          >
+            <li className="hover:text-white hover:underline ">
+              <Link to="/" onClick={() => setMenuOpen(false)}>
+                Home
+              </Link>
+            </li>
+            <li className="hover:text-white hover:underline">
+              <Link to="/about" onClick={() => setMenuOpen(false)}>
+                About
+              </Link>
+            </li>
+            <li className="hover:text-white hover:underline">
+              <Link to="/contact" onClick={() => setMenuOpen(false)}>
+                Contact
+              </Link>
+            </li>
+            <li className="hover:text-white hover:underline">
+              <Link to="/login" onClick={() => setMenuOpen(false)}>
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <FaUserCircle
+          className="mobile:hidden cursor-pointer active:bg-black active:text-white "
+          onClick={clicked}
+        />
+      </div>
+
+      <div className="laptop:flex laptop:gap-4 laptop:items-center mobile:hidden">
+        <ul className="flex gap-8 text-2xl ">
           <li>
             <Link to="/" onClick={() => setMenuOpen(false)}>
               Home
@@ -66,12 +90,12 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-
         <FaUserCircle
-          className="cursor-pointer active:bg-black active:text-white mobile:hidden"
+          className="cursor-pointer active:bg-black active:text-white  text-2xl"
           onClick={clicked}
         />
       </div>
+
       <div className={`justify-center bg-red-800  ${visible ? "" : "hidden"}`}>
         <form
           className="bg-[black] w-[85vw] h-[100vh] text-white justify-center items-center text-[20px] left-20 truncate absolute z-20 flex content-center flex-col rounded-lg"
@@ -103,7 +127,7 @@ function Navbar() {
             </div>
           </div>
           <FaWindowClose
-            className="absolute top-0 right-0 cursor-pointer truncate"
+            className="absolute top-0 right-0 cursor-pointer truncate text-3xl"
             onClick={closeLogIn}
           />
         </form>

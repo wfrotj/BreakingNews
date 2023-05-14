@@ -6,16 +6,16 @@ function Weather({ data }) {
   const { icon, description } = weather[0];
 
   return (
-    <div className="flex flex-row items-center text-black text-lg gap-4">
-      <h3 className="text-2xl items-center">{name}</h3>
+    <div className="flex flex-row items-center text-black text-lg laptop:text-2xl laptop:bg-yellow-500 laptop:gap-6 tablet:gap-1">
+      <h3 className="items-center">{name}</h3>
       <p className="items-center">{KelvinToCelsius(main.temp)}C</p>
 
       <div className="weather-details flex flex-row items-center">
         <img
           src={`http://openweathermap.org/img/w/${icon}.png`}
-          className="w-20"
+          className="laptop:w-20 tablet:hidden laptop:flex"
         />
-        <p>{TitleCase(description)}</p>
+        <p className="tablet:hidden laptop:flex">{TitleCase(description)}</p>
       </div>
     </div>
   );
