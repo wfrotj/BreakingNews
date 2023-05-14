@@ -32,8 +32,8 @@ function Navbar() {
       </div>
       {/* Mobile */}
       <div>
-        <div className="mobile:text-2xl mr-0  flex justify-end laptop:text-2xl laptop:hidden">
-          <button onClick={toggleMenu}>
+        <div className="mobile:text-2xl mobile:mr-0 mobile:flex justify-end tablet:text-2xl laptop:hidden">
+          <button onClick={toggleMenu} className="laptop:hidden">
             <FiMenu />
           </button>
         </div>

@@ -22,11 +22,11 @@ function Business() {
     );
   return (
     <div>
-      {/* <div className="mobile: grid grid-cols-1 gap-4 p-4 tablet:grid-cols-2 laptop:grid-cols-3 overflow-hidden scroll-smooth">
+      <div className="mobile: grid mobile:grid-cols-1 mobile:gap-4 mobile:p-4 tablet:grid-cols-2 laptop:grid-cols-3 overflow-hidden scroll-smooth">
         {news.map((article, index) => (
           <News key={index} article={article} />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }
