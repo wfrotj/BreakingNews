@@ -17,7 +17,7 @@ function HeroContent() {
       <span className="tablet:hidden laptop:hidden text-white">
         Get your latest news here!{" "}
       </span>
-      <p className="mobile:flex mobile:text-yellow-500 mobile:items-center tablet:bg-black ml-1">
+      <div className="mobile:flex mobile:text-yellow-500 mobile:items-center tablet:bg-black ml-1">
         Categories
         <div className=" text-yellow-500 font-bold py-2 px-4 rounded items-center justify-center flex  ">
           <BiChevronDown
@@ -25,7 +25,7 @@ function HeroContent() {
             className="tablet:hidden laptop:hidden"
           />
         </div>
-      </p>
+      </div>
       {isOpen && (
         <div className="absolute z-10  py-2 w-full bg-black tablet:hidden">
           <Link

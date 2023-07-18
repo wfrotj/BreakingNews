@@ -4,9 +4,7 @@ import News from "./News";
 function Technology() {
   const [news, setNews] = useState(null);
   async function getNewsData() {
-    const response = await fetch(
-      "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=3cd55c58e3cc44baa607d91d07ca81ce"
-    );
+    const response = await fetch("http://localhost:1114/news/technology");
     const data = await response.json();
     setNews(data.articles);
   }

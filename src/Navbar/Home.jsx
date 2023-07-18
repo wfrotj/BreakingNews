@@ -2,12 +2,13 @@ import React from "react";
 
 function Home() {
   return (
-    <div>
-      <form>
-        <label>What are your plans for today?</label>
-        <input type="text" className="w-40 border-black" />
-      </form>
-      <h1 className="text-2xl">Welcome</h1>
+    <div className="home">
+      <div>
+        Stay informed with NewsHeadlines, the ultimate web application
+        delivering breaking news at your fingertips. Our cutting-edge platform
+        brings you the latest headlines from around the world, covering diverse
+        topics like politics, technology, entertainment, sports, and more.
+      </div>
     </div>
   );
 }

@@ -5,9 +5,7 @@ function GetWeatherData() {
   const [data, setData] = useState(null);
   async function weatherData() {
     try {
-      const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=Manila&appid=e4de4a2dfe4265fb34a5c94c75d7813b"
-      );
+      const response = await fetch("http://localhost:1114/weather");
       const weatherData = await response.json();
 
       setData(weatherData);
