@@ -1,29 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUserCircle, FaWindowClose } from "react-icons/fa";
+
 import { FiMenu } from "react-icons/fi";
 import { useState } from "react";
+import Logout from "./Logout";
 
-function Navbar() {
+function Navbar({ user }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(false);
 
   function toggleMenu() {
     setMenuOpen(!menuOpen);
   }
 
-  const handlePasswordChange = () => {
-    event.target.value;
-  };
-  const handleUserNameChange = () => {
-    event.target.value;
-  };
-  function clicked() {
-    setVisible(!visible);
-  }
-  const closeLogIn = () => {
-    setVisible(!visible);
-  };
   return (
     <header className="bg-gray-300 mobile:flex justify-between p-4 text-lg font-semibold">
       <div className="flex gap-4 laptop: text-2xl ">
@@ -66,10 +54,6 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <FaUserCircle
-          className="mobile:hidden cursor-pointer active:bg-black active:text-white "
-          onClick={clicked}
-        />
       </div>
 
       <div className="laptop:flex laptop:gap-4 laptop:items-center mobile:hidden">
@@ -89,48 +73,18 @@ function Navbar() {
               Contact
             </Link>
           </li>
-        </ul>
-        <FaUserCircle
-          className="cursor-pointer active:bg-black active:text-white  text-2xl"
-          onClick={clicked}
-        />
-      </div>
-
-      <div className={`justify-center bg-red-800  ${visible ? "" : "hidden"}`}>
-        <form
-          className="bg-[black] w-[85vw] h-[100vh] text-white justify-center items-center text-[20px] left-20 truncate absolute z-20 flex content-center flex-col rounded-lg"
-          id="logIn"
-        >
-          <label className="justify-items-start">Username</label>
-          <input
-            type="text"
-            className="text-black"
-            onChange={handleUserNameChange}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            className="text-black"
-            onChange={handlePasswordChange}
-          />
-          <div className=" flex flex-row gap-4 mt-4">
-            <div className="ml-4">
-              <button className="bg-yellow-400 rounded mt-2 text-black font-semibold ">
+          {user ? (
+            <li className="hover:text-white hover:underline">
+              <Logout isLoggedIn={user} />
+            </li>
+          ) : (
+            <li className="hover:text-white hover:underline">
+              <Link to="/login" onClick={() => setMenuOpen(false)}>
                 Login
-              </button>
-              <p>
-                Not registered yet?{" "}
-                <a href="#" className="underline">
-                  Click here
-                </a>
-              </p>
-            </div>
-          </div>
-          <FaWindowClose
-            className="absolute top-0 right-0 cursor-pointer truncate text-3xl"
-            onClick={closeLogIn}
-          />
-        </form>
+              </Link>
+            </li>
+          )}
+        </ul>
       </div>
     </header>
   );

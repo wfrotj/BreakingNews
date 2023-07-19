@@ -1,13 +1,6 @@
 import axios from "axios";
 
-const apiClient = axios.create({
-  baseURL: "/register",
-  headers: {
-    common: {
-      "Content-Type": "multipart/form-data",
-    },
-  },
-});
+const baseURL = "http://localhost:1114/register";
 
 let token = null;
 function setToken(newToken) {

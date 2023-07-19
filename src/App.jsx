@@ -1,5 +1,7 @@
-import HeroContent from "./components/HeroContent";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
+import HeroContent from "./components/HeroContent";
 import Home from "./Navbar/Home";
 import About from "./Navbar/About";
 import Contact from "./Navbar/Contact";
@@ -10,32 +12,38 @@ import Health from "./components/Health";
 import Sports from "./components/Sports";
 import Science from "./components/Science";
 import Technology from "./components/Technology";
-import loginService from "./services/loginService";
 import userService from "./services/userService";
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-
-// import Navbar from "./Navbar/Navbar";
 
 function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    loginService.login({ username, password }).then((res) => {
-      window.localStorage.setItem("loggedUser", JSON.stringify(res));
-      userService.setToken(res.token);
-      setUser(res);
-      setUsername("");
-      setPassword("");
-    });
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem("loggedUser");
+
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      setUser(user);
+      userService.setToken(user.token);
+    } else {
+      navigate("/login");
+    }
+  }, [navigate]);
+
+  const handleLogin = () => {
+    // Implement your login logic here
   };
+
+  const handleLogout = () => {
+    // Implement your logout logic here
+  };
+
   return (
     <div>
-      <Navbar />
-      <HeroContent />
+      <Navbar user={user} handleLogout={handleLogout} />
+      {user && <HeroContent />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -45,22 +53,27 @@ function App() {
           element={
             <Login
               handleLogin={handleLogin}
-              user={user}
               setUsername={setUsername}
               setPassword={setPassword}
               username={username}
               password={password}
+              setUser={setUser}
             />
           }
         />
-
-        <Route path="/business" element={<Business />} />
-        <Route path="/entertainment" element={<Entertainment />} />
-        <Route path="/health" element={<Health />} />
-        <Route path="/sports" element={<Sports />} />
-        <Route path="/science" element={<Science />} />
-        <Route path="/technology" element={<Technology />} />
-      </Routes>{" "}
+        {user ? (
+          <>
+            <Route path="/business" element={<Business />} />
+            <Route path="/entertainment" element={<Entertainment />} />
+            <Route path="/health" element={<Health />} />
+            <Route path="/sports" element={<Sports />} />
+            <Route path="/science" element={<Science />} />
+            <Route path="/technology" element={<Technology />} />
+          </>
+        ) : (
+          <Route path="/" element={<Navigate to="/login" replace />} />
+        )}
+      </Routes>
     </div>
   );
 }
