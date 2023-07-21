@@ -5,18 +5,18 @@ import { useState } from "react";
 import GetWeatherData from "../components/Weather/GetWeatherData";
 import DateTime from "../components/utils/DateTime";
 
-function Navbar({ user }) {
+function Navbar({ setUser }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
-  const handleLogout = () => {
-    window.localStorage.clear();
-    navigate("/login", { replace: true });
-    console.log("You have been logged out");
-  };
+
   function toggleMenu() {
     setMenuOpen(!menuOpen);
   }
+  const handleLogout = () => {
+    window.localStorage.removeItem("loggedUser");
+    setUser(null);
+  };
 
   return (
     <header className="bg-gray-300 mobile:flex justify-between p-3 text-l font-semibold ">
@@ -55,6 +55,14 @@ function Navbar({ user }) {
               <Link to="/contact" onClick={() => setMenuOpen(false)}>
                 Contact
               </Link>
+            </li>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="hover:text-white hover:underline"
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>

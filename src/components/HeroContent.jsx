@@ -28,14 +28,12 @@ function HeroContent({ user, setUser }) {
       <span className="tablet:hidden laptop:hidden text-white">
         Get your latest news here!{" "}
       </span>
-      <div className="mobile:flex laptop:justify-center mobile:text-yellow-500 mobile:items-center tablet:bg-black ml-2">
+      <div className="mobile:flex tablet:ml-6 laptop:justify-center mobile:text-yellow-500 mobile:items-center tablet:bg-black ">
         Categories
-        <div className=" text-yellow-500 font-bold py-2 px-4 rounded items-center justify-center flex  ">
-          <BiChevronDown
-            onClick={toggleMenu}
-            className="tablet:hidden laptop:hidden"
-          />
-        </div>
+        <BiChevronDown
+          onClick={toggleMenu}
+          className="tablet:hidden laptop:hidden"
+        />
       </div>
       {isOpen && (
         <div className="absolute z-10 py-2 w-full bg-black tablet:hidden laptop:hidden">
@@ -88,7 +86,7 @@ function HeroContent({ user, setUser }) {
       <div className="laptop:flex tablet:flex tablet:bg-black tablet:items-center tablet:font-semibold laptop:justify-between mobile:hidden ">
         <Link
           to="/business"
-          className={` block px-4 py-2  hover:bg-gray-900 active:bg-white active:text-black ${
+          className={` block px-2 py-2  hover:bg-gray-900 active:bg-white active:text-black ${
             location.pathname === "/business"
               ? "text-black font-semibold bg-white"
               : "text-white"
@@ -98,7 +96,7 @@ function HeroContent({ user, setUser }) {
         </Link>
         <Link
           to="/entertainment"
-          className={` block px-4 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
+          className={` block px-2 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
             location.pathname === "/entertainment"
               ? "text-slate-900 font-semibold bg-white"
               : "text-white"
@@ -108,7 +106,7 @@ function HeroContent({ user, setUser }) {
         </Link>
         <Link
           to="/health"
-          className={` block px-4 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
+          className={` block px-2 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
             location.pathname === "/health"
               ? "text-slate-900 font-semibold bg-white"
               : "text-white"
@@ -118,7 +116,7 @@ function HeroContent({ user, setUser }) {
         </Link>
         <Link
           to="/sports"
-          className={` block px-4 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
+          className={` block px-2 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
             location.pathname === "/sports"
               ? "text-slate-900 font-semibold bg-white"
               : "text-white"
@@ -128,7 +126,7 @@ function HeroContent({ user, setUser }) {
         </Link>
         <Link
           to="/science"
-          className={` block px-4 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
+          className={` block px-2 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
             location.pathname === "/science"
               ? "text-slate-900 font-semibold bg-white"
               : "text-white"
@@ -138,7 +136,7 @@ function HeroContent({ user, setUser }) {
         </Link>
         <Link
           to="/technology"
-          className={` block px-4 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
+          className={` block px-2 py-2  hover:bg-gray-900 hover:text-white active:bg-white active:text-black ${
             location.pathname === "/technology"
               ? "text-slate-900 font-semibold bg-white"
               : "text-white"

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
-import HeroContent from "./components/HeroContent";
 import Home from "./Navbar/Home";
 import About from "./Navbar/About";
 import Contact from "./Navbar/Contact";
+import userService from "./services/userService";
+import HeroContent from "./components/HeroContent";
 import Login from "./pages/Login";
 import Business from "./components/Business";
 import Entertainment from "./components/Entertainment";
@@ -12,8 +13,7 @@ import Health from "./components/Health";
 import Sports from "./components/Sports";
 import Science from "./components/Science";
 import Technology from "./components/Technology";
-import userService from "./services/userService";
-
+import RegisterForm from "./pages/RegisterForm";
 function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -30,20 +30,40 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
   return (
     <div>
-      <Navbar />
       {user === null ? (
-        <Login
-          setPassword={setPassword}
-          password={password}
-          username={username}
-          setUsername={setUsername}
-          setUser={setUser}
-          user={user}
-        />
+        <>
+          <Login
+            setPassword={setPassword}
+            password={password}
+            username={username}
+            setUsername={setUsername}
+            setUser={setUser}
+            user={user}
+          />
+        </>
       ) : (
-        <>{<HeroContent setUser={setUser} user={user} />}</>
+        <>
+          <Navbar setUser={setUser} />
+          {<HeroContent setUser={setUser} user={user} />}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/business" element={<Business />} />
+            <Route path="/entertainment" element={<Entertainment />} />
+            <Route path="/health" element={<Health />} />
+            <Route path="/science" element={<Science />} />
+            <Route path="/sports" element={<Sports />} />
+            <Route path="/technology" element={<Technology />} />
+          </Routes>
+        </>
       )}
     </div>
   );

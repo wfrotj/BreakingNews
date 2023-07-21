@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:1114/register";
+const baseURL = "/register";
 
 let token = null;
 function setToken(newToken) {

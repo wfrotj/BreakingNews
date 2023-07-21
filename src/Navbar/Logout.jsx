@@ -1,13 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Logout() {
-  const navigate = useNavigate();
-
+function Logout({ setUser }) {
   const handleLogout = () => {
-    window.localStorage.clear();
-    navigate("/login", { replace: true });
-    console.log("You have been logged out");
+    window.localStorage.removeItem("loggedUser");
+    setUser(null);
   };
 
   return <span onClick={handleLogout} style={{ cursor: "pointer" }}></span>;
