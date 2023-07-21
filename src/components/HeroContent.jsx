@@ -1,23 +1,34 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
-import GetWeatherData from "./Weather/GetWeatherData";
+import { GiExitDoor } from "react-icons/gi";
+import { useEffect } from "react";
 
-function HeroContent() {
+function HeroContent({ user, setUser }) {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
+  const navigate = useNavigate();
   function toggleMenu() {
     setIsOpen(!isOpen);
   }
 
+  useEffect(() => {
+    if (!user) navigate("/login");
+  }, [user, navigate]);
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("loggedUser");
+    setUser(null);
+  };
+
   return (
-    <div className="mobile:relative tablet:flex laptop:flex laptop:text-3xl latop:font-bold laptop:justify-between bg-black ">
+    <div className="mobile:relative tablet:flex laptop:flex laptop:text-2xl latop:font-bold bg-black ">
       <span className="tablet:hidden laptop:hidden text-white">
         Get your latest news here!{" "}
       </span>
-      <div className="mobile:flex mobile:text-yellow-500 mobile:items-center tablet:bg-black ml-1">
+      <div className="mobile:flex laptop:justify-center mobile:text-yellow-500 mobile:items-center tablet:bg-black ml-2">
         Categories
         <div className=" text-yellow-500 font-bold py-2 px-4 rounded items-center justify-center flex  ">
           <BiChevronDown
@@ -27,7 +38,7 @@ function HeroContent() {
         </div>
       </div>
       {isOpen && (
-        <div className="absolute z-10  py-2 w-full bg-black tablet:hidden">
+        <div className="absolute z-10 py-2 w-full bg-black tablet:hidden laptop:hidden">
           <Link
             to="/business"
             className="block px-4 py-2 text-white hover:bg-gray-900 active:bg-white active:text-black"
@@ -64,9 +75,16 @@ function HeroContent() {
           >
             Technology
           </Link>
+          <Link
+            to="/technology"
+            className="block px-4 py-2 text-white hover:bg-gray-900 active:bg-white active:text-black"
+          >
+            Technology
+          </Link>
         </div>
       )}
       {/* laptop */}
+
       <div className="laptop:flex tablet:flex tablet:bg-black tablet:items-center tablet:font-semibold laptop:justify-between mobile:hidden ">
         <Link
           to="/business"
@@ -128,9 +146,12 @@ function HeroContent() {
         >
           Technology
         </Link>
-      </div>{" "}
-      <div className="mobile:hidden tablet:hidden  tablet:font-semibold laptop:flex ">
-        <GetWeatherData />
+      </div>
+      <div className="laptop:flex tablet:flex tablet:bg-black tablet:items-center tablet:font-semibold laptop:justify-between mobile:hidden">
+        <GiExitDoor
+          onClick={handleLogout}
+          className="text-white font-bold text-2xl ml-6"
+        />
       </div>
     </div>
   );

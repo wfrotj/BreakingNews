@@ -27,53 +27,24 @@ function App() {
       const user = JSON.parse(loggedUserJSON);
       setUser(user);
       userService.setToken(user.token);
-    } else {
-      navigate("/login");
     }
-  }, [navigate]);
-
-  const handleLogin = () => {
-    // Implement your login logic here
-  };
-
-  const handleLogout = () => {
-    // Implement your logout logic here
-  };
+  }, []);
 
   return (
     <div>
-      <Navbar user={user} handleLogout={handleLogout} />
-      {user && <HeroContent />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route
-          path="/login"
-          element={
-            <Login
-              handleLogin={handleLogin}
-              setUsername={setUsername}
-              setPassword={setPassword}
-              username={username}
-              password={password}
-              setUser={setUser}
-            />
-          }
+      <Navbar />
+      {user === null ? (
+        <Login
+          setPassword={setPassword}
+          password={password}
+          username={username}
+          setUsername={setUsername}
+          setUser={setUser}
+          user={user}
         />
-        {user ? (
-          <>
-            <Route path="/business" element={<Business />} />
-            <Route path="/entertainment" element={<Entertainment />} />
-            <Route path="/health" element={<Health />} />
-            <Route path="/sports" element={<Sports />} />
-            <Route path="/science" element={<Science />} />
-            <Route path="/technology" element={<Technology />} />
-          </>
-        ) : (
-          <Route path="/" element={<Navigate to="/login" replace />} />
-        )}
-      </Routes>
+      ) : (
+        <>{<HeroContent setUser={setUser} user={user} />}</>
+      )}
     </div>
   );
 }

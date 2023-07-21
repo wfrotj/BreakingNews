@@ -10,12 +10,11 @@ function Login({ username, setUsername, password, setPassword, setUser }) {
       .then((res) => {
         window.localStorage.setItem("loggedUser", JSON.stringify(res));
         userService.setToken(res.token);
-        console.log(res);
         setUser(res);
         setUsername("");
         setPassword("");
       })
-      .catch((err) => console.log(err));
+      .catch((error) => alert(error.response.data.error));
   };
   {
     return (

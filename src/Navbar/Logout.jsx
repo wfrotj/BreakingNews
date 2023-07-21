@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Logout({ isLoggedIn }) {
+function Logout() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -10,11 +10,7 @@ function Logout({ isLoggedIn }) {
     console.log("You have been logged out");
   };
 
-  return (
-    <span onClick={handleLogout} style={{ cursor: "pointer" }}>
-      {isLoggedIn ? "Logout" : "Login"}
-    </span>
-  );
+  return <span onClick={handleLogout} style={{ cursor: "pointer" }}></span>;
 }
 
 export default Logout;
