@@ -5,7 +5,9 @@ function GetWeatherData() {
   const [data, setData] = useState(null);
   async function weatherData() {
     try {
-      const response = await fetch("http://localhost:1114/weather");
+      const response = await fetch(
+        "https://news-headlines.onrender.com/weather"
+      );
       const weatherData = await response.json();
 
       setData(weatherData);

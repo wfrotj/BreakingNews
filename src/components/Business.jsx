@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import News from "./News";
+const baseUrl = "https://news-headlines.onrender.com/news/business";
 
 function Business() {
   const [news, setNews] = useState(null);
   async function getNewsData() {
-    const response = await fetch("http://localhost:1114/news/business");
+    const response = await fetch(baseUrl);
     const data = await response.json();
     setNews(data.articles);
   }
