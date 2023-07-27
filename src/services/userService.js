@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "/register";
+const baseURL = "https://news-headlines.onrender.com/register";
 
 let token = null;
 function setToken(newToken) {
