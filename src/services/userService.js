@@ -1,13 +1,6 @@
 import axios from "axios";
 
-const apiClient = axios.create({
-  baseURL: "/register",
-  headers: {
-    common: {
-      "Content-Type": "multipart/form-data",
-    },
-  },
-});
+const baseURL = "https://news-headlines.onrender.com/register";
 
 let token = null;
 function setToken(newToken) {
