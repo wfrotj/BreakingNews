@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/"
+    },
+    {
+      "src": "/about",
+      "dest": "/"
+    },
+    {
+      "src": "/contact",
+      "dest": "/"
+    },
+    {
+      "src": "/business",
+      "dest": "/"
+    },
+    {
+      "src": "/entertainment",
+      "dest": "/"
+    },
+    {
+      "src": "/menu/analytics",
+      "dest": "/"
+    },
+    {
+      "src": "/health",
+      "dest": "/"
+    },
+    {
+      "src": "/science",
+      "dest": "/"
+    },
+    {
+      "src": "/sports",
+      "dest": "/"
+    },
+    {
+      "src": "/technology",
+      "dest": "/"
+    }
+  ]
+}
