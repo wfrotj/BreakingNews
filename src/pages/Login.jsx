@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import loginService from "../services/loginService";
 import userService from "../services/userService";
 
-function Login({ username, setUsername, password, setPassword, setUser }) {
+function Login({ setUser }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleLogin = (e) => {
     e.preventDefault();
 

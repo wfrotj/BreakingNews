@@ -145,12 +145,13 @@ function HeroContent({ user, setUser }) {
           Technology
         </Link>
       </div>
-      <div className="laptop:flex tablet:flex tablet:bg-black tablet:items-center tablet:font-semibold laptop:justify-between mobile:hidden">
+      <button className="laptop:flex tablet:flex tablet:bg-black tablet:items-center tablet:font-semibold laptop:justify-between mobile:hidden">
         <GiExitDoor
           onClick={handleLogout}
           className="text-white font-bold text-2xl ml-6"
-        />
-      </div>
+        />{" "}
+        <span className="text-white">Logout</span>
+      </button>
     </div>
   );
 }

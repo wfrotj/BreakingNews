@@ -15,8 +15,6 @@ import Science from "./components/Science";
 import Technology from "./components/Technology";
 import RegisterForm from "./pages/RegisterForm";
 function App() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -30,40 +28,31 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate("/home");
+  //   }
+  // }, [user, navigate]);
+
   return (
     <div>
-      {user === null ? (
-        <>
-          <Login
-            setPassword={setPassword}
-            password={password}
-            username={username}
-            setUsername={setUsername}
-            setUser={setUser}
-            user={user}
-          />
-        </>
+      <Navbar setUser={setUser} />
+      <HeroContent setUser={setUser} user={user} />
+
+      {user ? (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/business" element={<Business />} />
+          <Route path="/entertainment" element={<Entertainment />} />
+          <Route path="/health" element={<Health />} />
+          <Route path="/science" element={<Science />} />
+          <Route path="/sports" element={<Sports />} />
+          <Route path="/technology" element={<Technology />} />
+        </Routes>
       ) : (
-        <>
-          <Navbar setUser={setUser} />
-          {<HeroContent setUser={setUser} user={user} />}
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/business" element={<Business />} />
-            <Route path="/entertainment" element={<Entertainment />} />
-            <Route path="/health" element={<Health />} />
-            <Route path="/science" element={<Science />} />
-            <Route path="/sports" element={<Sports />} />
-            <Route path="/technology" element={<Technology />} />
-          </Routes>
-        </>
+        <Login setUser={setUser} />
       )}
     </div>
   );
