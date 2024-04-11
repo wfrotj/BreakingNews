@@ -14,13 +14,10 @@ function HeroContent({ user, setUser }) {
     setIsOpen(!isOpen);
   }
 
-  useEffect(() => {
-    if (!user) navigate("/login");
-  }, [user, navigate]);
-
   const handleLogout = () => {
-    window.localStorage.removeItem("loggedUser");
+    window.localStorage.clear("loggedUser");
     setUser(null);
+    console.log("clear!");
   };
 
   return (
@@ -145,11 +142,11 @@ function HeroContent({ user, setUser }) {
           Technology
         </Link>
       </div>
-      <button className="laptop:flex tablet:flex tablet:bg-black tablet:items-center tablet:font-semibold laptop:justify-between mobile:hidden">
-        <GiExitDoor
-          onClick={handleLogout}
-          className="text-white font-bold text-2xl ml-6"
-        />{" "}
+      <button
+        className="laptop:flex tablet:flex tablet:bg-black tablet:items-center tablet:font-semibold laptop:justify-between mobile:hidden"
+        onClick={handleLogout}
+      >
+        <GiExitDoor className="text-white font-bold text-2xl ml-6" />{" "}
         <span className="text-white">Logout</span>
       </button>
     </div>

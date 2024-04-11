@@ -28,11 +28,11 @@ function App() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/home");
-  //   }
-  // }, [user, navigate]);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div>
@@ -52,7 +52,7 @@ function App() {
           <Route path="/technology" element={<Technology />} />
         </Routes>
       ) : (
-        <Login setUser={setUser} />
+        <Login setUser={setUser} user={user} />
       )}
     </div>
   );
